@@ -1,17 +1,16 @@
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.resourcegraph import ResourceGraphClient
 from azure.mgmt.resourcegraph.models import QueryRequest
-import pika
+import pika,time
 
 
 def run_resource_graph_query(image_digest,image_name):
+        time.sleep(300)
         credential = DefaultAzureCredential()
         client = ResourceGraphClient(credential)
         query = set_resource_graph_query(image_digest, image_name)
         result = client.resources(QueryRequest(query=query)).as_dict()
         result=str(result)
-        if result=="":
-            result="hello!!!"
         rabbit_massage=send_message_to_rabbitmq(result)
         return rabbit_massage
 
