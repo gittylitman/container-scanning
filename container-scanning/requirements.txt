@@ -1,5 +1,7 @@
 flask
 waitress
-azure-storage-queue
+azure-cli
+azure-identity
+azure-mgmt-resourcegraph
 python-dotenv
 pika
