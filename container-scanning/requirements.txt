@@ -2,3 +2,4 @@ flask
 waitress
 azure-storage-queue
 python-dotenv
+pika
