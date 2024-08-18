@@ -1,7 +1,6 @@
 from flask import Flask
 from waitress import serve
 from azure.storage.queue import QueueClient, TextBase64EncodePolicy
-import time
 import os
 import sys
 
@@ -14,13 +13,13 @@ app = Flask(__name__)
 @app.route("/image_push", methods=["POST"])
 def send_to_image_scanning():
     try:
-        time.sleep(180)
         queue_client = QueueClient.from_connection_string(
             config.config_variables.connection_string,
             config.config_variables.queue_name,
             message_encode_policy=TextBase64EncodePolicy(),
         )
         queue_client.send_message("hello")
+        return 200
     except Exception as ex:
         raise Exception(ex)
 
