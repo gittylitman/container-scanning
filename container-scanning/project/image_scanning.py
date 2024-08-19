@@ -12,7 +12,7 @@ def run_resource_graph_query(image_digest,image_name):
         result = client.resources(QueryRequest(query=query)).as_dict()
         if result["data"] == []:
                result["data"] = [{"image-name":image_name}, {"data":"Health check"}]
-        result=str(result)
+        result=str(result) 
         rabbit_massage=send_message_to_rabbitmq(result)
         return rabbit_massage
 
