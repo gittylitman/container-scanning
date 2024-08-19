@@ -1,3 +1,3 @@
-print("try without senten data")
+print("try without sss data")
 
 
