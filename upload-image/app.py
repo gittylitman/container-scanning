@@ -1,2 +1,2 @@
-print("try without ddd data")
+print("try without data")
 
