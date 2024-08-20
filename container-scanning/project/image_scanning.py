@@ -6,6 +6,7 @@ import pika,time
 
 def run_resource_graph_query(image_digest,image_name):
         # time.sleep(300)
+        
         credential = DefaultAzureCredential()
         client = ResourceGraphClient(credential)
         query = set_resource_graph_query(image_digest, image_name)
