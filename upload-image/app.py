@@ -1,3 +1,3 @@
-print("try without sss data")
+print("try without data")
 
 
