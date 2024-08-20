@@ -23,6 +23,7 @@ def set_resource_graph_query(image_digest,image_name):
     query = f"""
         securityresources
         | where type =~ 'microsoft.security/assessments/subassessments'
+        | where properties.resourceDetails.ResourceProvider == 'acr'
         | where properties contains '{image_digest}'
         | summarize data = make_list(pack(
             'CVE_ID', properties.id,
