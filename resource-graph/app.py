@@ -1,4 +1,4 @@
-print("try without data")
+print("try with az login")
 
 
 
