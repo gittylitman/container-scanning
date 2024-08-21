@@ -17,6 +17,7 @@ jobs:
     name: Docker Build
     runs-on: ubuntu-latest
 
+
     steps:
       - name: 📁 Checkout repository
         uses: actions/checkout@v4
@@ -29,7 +30,7 @@ jobs:
 
       - name: ⛵ Login to Azure
         run: az login
-        
+
       - name: 🗝️ Login to Container Registry
         uses: azure/docker-login@v1
         with:
