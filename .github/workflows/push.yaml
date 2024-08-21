@@ -10,7 +10,7 @@ permissions:
   packages: write
 
 env:
-  WORKING_DIR: try_and_update
+  WORKING_DIR: resource-graph
 
 jobs:
   build:
