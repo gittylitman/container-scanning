@@ -1,4 +1,4 @@
-print("try with az login")
+print("try with async login")
 
 
 
