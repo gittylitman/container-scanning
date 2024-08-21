@@ -2,6 +2,11 @@ from azure.identity import DefaultAzureCredential
 from azure.mgmt.resourcegraph import ResourceGraphClient
 from azure.mgmt.resourcegraph.models import QueryRequest
 import pika,time
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+import config.config_variables
 
 
 def run_resource_graph_query(image_digest,image_name):
@@ -33,12 +38,16 @@ def set_resource_graph_query(image_digest,image_name):
 
 
 def send_message_to_rabbitmq(message):
-        credentials = pika.PlainCredentials("admin", "admin")
-        connection = pika.BlockingConnection(pika.ConnectionParameters(host="172.171.129.95", credentials=credentials))
+        host = config.config_variables.host
+        user_name = config.config_variables.user_name
+        password = config.config_variables.password
+        queue_name = config.config_variables.queue_name
+        credentials = pika.PlainCredentials(username = user_name, password = password)
+        connection = pika.BlockingConnection(pika.ConnectionParameters(host = host, credentials=credentials))
         channel = connection.channel()
-        channel.queue_declare(queue="logs")
+        channel.queue_declare(queue=queue_name)
         channel.basic_publish(exchange='',
-                              routing_key="logs",
+                              routing_key=queue_name,
                               body=message)
         connection.close() 
         return "success!"
