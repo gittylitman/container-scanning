@@ -42,12 +42,12 @@ def send_message_to_rabbitmq(message):
         user_name = config.config_variables.user_name
         password = config.config_variables.password
         queue_name = config.config_variables.queue_name
-        credentials = pika.PlainCredentials(username = user_name, password = password)
-        connection = pika.BlockingConnection(pika.ConnectionParameters(host = host, credentials=credentials))
+        credentials = pika.PlainCredentials(username = "admin", password = "admin")
+        connection = pika.BlockingConnection(pika.ConnectionParameters(host = "172.171.129.95", credentials=credentials))
         channel = connection.channel()
-        channel.queue_declare(queue=queue_name)
+        channel.queue_declare(queue="logs")
         channel.basic_publish(exchange='',
-                              routing_key=queue_name,
+                              routing_key="logs",
                               body=message)
         connection.close() 
         return "success!"
