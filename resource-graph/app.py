@@ -1,4 +1,4 @@
-print("try with upload the all ")
+print("try with function app ")
 
 
 
