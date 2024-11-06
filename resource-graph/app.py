@@ -1,4 +1,4 @@
-print("try with hard-coded with new function app without sleep")
+print("try with hard-coded wiyh try and except")
 
 
 
