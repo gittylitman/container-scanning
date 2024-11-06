@@ -1,4 +1,4 @@
-print("try with await 1 minutes")
+print("try with async")
 
 
 
