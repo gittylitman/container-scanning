@@ -1,4 +1,4 @@
-print("try with hard-coded with more logging")
+print("try with hard-coded with new function app without sleep")
 
 
 
