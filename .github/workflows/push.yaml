@@ -10,7 +10,7 @@ permissions:
   packages: write
 
 env:
-  WORKING_DIR: resource-graph
+  WORKING_DIR: trivy
 
 jobs:
   build:
